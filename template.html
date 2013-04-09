@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>MBKM 2013</title>
+		<style type="text/css" title="currentStyle">
+			@import "media/css/demo_page.css";
+			@import "media/css/demo_table_jui.css";
+            @import "media/css/smoothness/jquery-ui-1.8.4.custom.css";
+		</style>
+		<script type="text/javascript" language="javascript" src="media/js/jquery.js"></script>
+		<script type="text/javascript" language="javascript" src="media/js/jquery.dataTables.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+              $('#example').dataTable({
+                "bJQueryUI": true,
+                "sPaginationType": "full_numbers"
+              });
+			} );
+		</script>
+	</head>
+	<body id="dt_example">
+		<div id="container">
+			<div class="full_width big">
+              Daftar Calon Penerima Beasiswa MBKM 2013
+			</div>
+
+            <h1>Tabel Daftar Calon Penerima Beasiswa</h1>
+            <p>Manfaatkan search untuk melakukan pencarian di tabel. Isikan nama, NIM, atau Program Studi. Previus/Next (di pojok kanan bawah tabel) untuk melihat halaman sebelum/berikutnya. Klik Judul Kolom yang bersangkutan untuk sorting berdasarkan Nama, NIM, atau Prodi. Tentukan berapa baris yang ditampilkan dengan memilih dropdown di pojok kiri atas tabel.</p>
+			
+			<div id="demo_jui">
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="example" width="100%">
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>NIM</th>
+          <th>Prodi</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in rs -%}
+        <tr>
+          {% for c in r[1:] -%}
+          <td>{{ c }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>Nama</th>
+          <th>NIM</th>
+          <th>Prodi</th>
+        </tr>
+      </tfoot>
+</table>
+			</div>
+			<h1>Keterangan</h1>
+            <p>Daftar calon penerima beasiswa MBKM 2013 ini diambil <a href="http://kemahasiswaan.um.ac.id" title="Kemahasiswaan UM">Website Kemahasiswaan UM</a>. Didownload dan diolah dengan script (ruby & python) secara otomatis. Memanfaatkan beberapa library berikut: mechanize untuk scrapping, xlrd untuk parsing isi tabel di dalam excel, dan jinja2 untuk templating halaman. Filtering dan tema tabel diambil dari DataTables jquery plugin.</p>
+
+			<div id="footer" class="clear" style="text-align:center;">
+                <p>Project ini dalam rangka belajar pemrograman dengan memanfaatkan bahasa python (dan juga ruby). Harap maklum jika ada kesalahan baik dalam isi tabel ataupun halaman. Kritik dan
+              saran alamatkan ke matematika dot adit at gmail dot com.</p>
+				
+				<span style="font-size:10px;">
+                  Kode untuk scrapping, parsing, dan templating serta halaman ini bisa dilihat di <a href="https://github.com/matematikaadit/">matematikaadit/scrapping</a>.<br>
+                  Dibuat oleh Adit C.R. (Matematika UM 2009).<br>
+                  Dibuat di Malang, 9 April 2013
+                </span>
+			</div>
+		</div>
+	</body>
+</html>
